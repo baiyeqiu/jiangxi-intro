@@ -9,9 +9,15 @@ export default async (request, context) => {
   const referer = request.headers.get("referer") || "";
 
   // ====================================
-  // 1. 请求方法过滤（只允许 GET/HEAD）
+  // 1. 请求方法过滤
   // ====================================
-  if (!["GET", "HEAD"].includes(method)) {
+  const apiPaths = ["/auth", "/api"];
+  const isApiPath = apiPaths.some((p) => url.pathname.startsWith(p));
+  const allowedMethods = isApiPath
+    ? ["GET", "HEAD", "POST"]
+    : ["GET", "HEAD"];
+
+  if (!allowedMethods.includes(method)) {
     return new Response("Method Not Allowed", {
       status: 405,
       headers: { "Content-Type": "text/plain" },

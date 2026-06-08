@@ -9,7 +9,12 @@
 
 export default async (req) => {
   const url = new URL(req.url);
-  const path = url.pathname.replace("/.netlify/functions/api", "");
+  // 兼容两种路径：直接访问 /.netlify/functions/api 或通过 /api 重写
+  let path = url.pathname.replace("/.netlify/functions/api", "");
+  // 也尝试去掉 /api 前缀（Netlify rewrite 可能保留原始路径）
+  if (path === url.pathname) {
+    path = url.pathname.replace(/^\/api/, "");
+  }
   const method = req.method;
 
   // ==========================================

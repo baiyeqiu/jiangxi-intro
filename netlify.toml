@@ -7,7 +7,12 @@
   publish = "dist"
   functions = "netlify/functions"
 
-# ---- API 路由 → Serverless 函数 ----
+# ---- API 路由 → Serverless 函数（必须在 SPA 路由之前）----
+[[redirects]]
+  from = "/api"
+  to = "/.netlify/functions/api"
+  status = 200
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
@@ -18,7 +23,18 @@
   to = "/.netlify/functions/auth"
   status = 200
 
-# ---- SPA 路由（前端页面）----
+[[redirects]]
+  from = "/auth/*"
+  to = "/.netlify/functions/auth/:splat"
+  status = 200
+
+# ---- SPA 路由（前端页面，放在最后兜底）----
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
