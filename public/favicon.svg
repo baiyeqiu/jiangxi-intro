@@ -1,7 +1,5 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="32" height="32" fill="#1a5f4a"/>
-<path d="M4 28L12 14L20 20L28 8L32 28H4Z" fill="#2d7a62" opacity="0.8"/>
-<path d="M8 28L14 18L18 22L24 12L28 28H8Z" fill="#3d9a7c" opacity="0.9"/>
-<circle cx="24" cy="8" r="3" fill="#ffd700" opacity="0.8"/>
-<path d="M4 28H32V32H4V28Z" fill="#1a5f4a"/>
+<path d="M4 28L12 14L20 20L28 8L32 28H4Z" fill="#ffd700"/>
+<path d="M8 28L14 18L18 22L24 12L28 28H8Z" fill="#ffc107"/>
+<circle cx="24" cy="8" r="3" fill="#fffacd" opacity="0.9"/>
 </svg>
